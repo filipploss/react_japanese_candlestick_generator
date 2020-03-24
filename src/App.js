@@ -1,14 +1,12 @@
-import React from 'react';
-import './App.css';
+import React from "react";
+import "./App.css";
+import Board from "./components/Board";
 
-import generator from './generator'
 
 function App() {
   return (
-    <div className="App">
-      {generator()}
-      {console.log('generator!')}
-      
+    <div>
+      <Board />
     </div>
   );
 }
