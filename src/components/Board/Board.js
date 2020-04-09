@@ -4,18 +4,17 @@ import ReactApexChart from "react-apexcharts";
 
 import generateChart from "../../actions";
 import generator from "../../generator";
-import { dispatch } from "../../index";
 
 class Board extends Component {
   data = generator();
 
   componentDidMount = () => {
-    dispatch(generateChart(this.data));
+    this.props.generateChart(this.data);
   };
 
   generateChart = () => {
     let data = generator();
-    dispatch(generateChart(data));
+    this.props.generateChart(data);
   };
 
   render() {
@@ -36,8 +35,12 @@ class Board extends Component {
 const mapStateToProps = ({ series, options }) => {
   return {
     series,
-    options
+    options,
   };
 };
 
-export default connect(mapStateToProps)(Board);
+const mapDispatchToProps = {
+  generateChart,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Board);
